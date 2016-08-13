@@ -3,7 +3,7 @@
 
 <h1>{{ name }}</h1>
 
-<form class="form-inline" method="post" src="/crypto/atbash">
+<form class="form-inline" method="POST" action="/crypto/atbash">
     <div class="form-group">
         <label for="exampleInputName2">Name</label>
         <input name="input" type="text" class="form-control" placeholder="This is a test string."{% if addon %} value="{{addon["args"]["input"]}}"{% end %}>
