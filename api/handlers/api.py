@@ -25,15 +25,15 @@ class callAPIHandler(tornado.web.RequestHandler):
         # expose POST data for debugging
         print data
 
-        try:
-            obj = addon["module"]()
-            result = getattr(obj, data["method"])(data)
-            output = {
-                "method": data["method"],
-                "args": data,
-                "result": result,
-            }
-        except:
-            output = 'error'
+        # try:
+        obj = addon["module"]()
+        result = getattr(obj, data["method"])(data)
+        output = {
+            "method": data["method"],
+            "args": data,
+            "result": result,
+        }
+        #except:
+        #    output = 'exception: {}'.format(sys.exc_info()[0])
 
         self.write(output)

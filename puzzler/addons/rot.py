@@ -8,7 +8,11 @@ class rot:
 
     # main routine to execute
     def main(self, data):
-        return
+        rotData = []
+        rotData.append({
+            "output": self.all(data),
+        })
+        return rotData
 
     # everything possible at once
     def all(self, data):
@@ -23,7 +27,11 @@ class rot:
 
     # process only one
     def single(self, data):
+        rotData = []
         output = self.rot(data["input"], data["n"])
+        rotData.append({
+            "output": output,
+        })
         return output
 
     # basic decrypt
