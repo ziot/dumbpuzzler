@@ -36,12 +36,17 @@ class CallAddonHandler(tornado.web.RequestHandler):
             data[arg]=self.request.arguments[arg][0]
         return data
 
-    def get(self):
-        self.write('test')
+    def get(self, name):
+        self.render(
+            "addon_{}.html".format(name),
+            addon = "",
+            name = name,
+        )
 
     def post(self, name):
         data = self.parseArgs()
         addon = self.callAddon(name, data)
+        print addon
         self.render(
             "addon_{}.html".format(name),
             addon = addon,

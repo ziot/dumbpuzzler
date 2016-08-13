@@ -4,7 +4,34 @@
 
 <h1>{{ name }}</h1>
 
-<table cellspacing="0" cellpadding="0">
+<h2></h2>
+
+<form class="form-inline" method="post" src="/crypto/rot">
+    <div class="form-group">
+        <label for="exampleInputName2">Name</label>
+        <input name="input" type="text" class="form-control" placeholder="This is a test string."{% if addon %} value="{{addon["args"]["input"]}}"{% end %}>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail2">Method</label>
+
+        <select name="method" class="custom-select">
+            <option value="all" selected>All</option>
+            <option value="single">Single</option>
+        </select>
+        
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail2">Rot N</label>
+        <input type="method" class="form-control" placeholder="n/a" value="" size="2">
+    </div>
+    <button type="submit" class="btn btn-primary">Rot-It</button>
+</form>
+
+{% if addon %}
+
+<h2>Results</h2>
+
+<table class="table table-striped">
 <tr>
     <th width="75">Rot</th>
     <th>Output</th>
@@ -19,6 +46,8 @@
     {% end %}
 {% end %}
 </table>
+
+{% end %}
 
 {% module Template("footer.html") %}
 
