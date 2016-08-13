@@ -36,15 +36,7 @@ class CallAddonHandler(tornado.web.RequestHandler):
             data[arg]=self.request.arguments[arg][0]
         return data
 
-    def get(self, name):
-        self.render(
-            "addon_{}.html".format(name),
-            addon = "",
-            name = name,
-        )
-
-    def post(self, name):
-        data = self.parseArgs()
+    def runCipher(self, name, data):
         addon = self.callAddon(name, data)
         print addon
         self.render(
@@ -52,4 +44,20 @@ class CallAddonHandler(tornado.web.RequestHandler):
             addon = addon,
             name = name,
         )
+        return
+
+    def get(self, name):
+        data = self.parseArgs()
+        if data:
+            self.runCipher(name, data)
+        else:
+            self.render(
+                "addon_{}.html".format(name),
+                addon = "",
+                name = name,
+            )
+
+    def post(self, name):
+        data = self.parseArgs()
+        self.runCipher(name, data)
         return
