@@ -1,14 +1,24 @@
-
-
 {% module Template("header.html") %}
 
-<ul>
+
+{% if addons %}
+
+<h2>Modules</h2>
+
+<table class="table table-striped">
+<tr>
+    <th>Addon</th>
+</tr>
 {% for addon in addons %}
 {% block addon %}
-    <li>{{ addon["name"] }}</li>
+    <tr>
+        <td><a href="/crypto/{{addon["name"]}}">{{addon["name"]}}</a></td>
+    </tr>
+    {% end %}
 {% end %}
+</table>
+
 {% end %}
-</ul>
+
 
 {% module Template("footer.html") %}
-
