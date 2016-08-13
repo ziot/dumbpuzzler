@@ -1,0 +1,24 @@
+
+
+{% module Template("header.html") %}
+
+<h1>{{ name }}</h1>
+
+<table cellspacing="0" cellpadding="0">
+<tr>
+    <th width="75">Rot</th>
+    <th>Output</th>
+</tr>
+
+{% for result in addon["result"] %}
+    {% block result %}
+    <tr>
+        <td>{{ result["n"] }}</td>
+        <td>{{ result["output"] }}</td>
+    </tr>
+    {% end %}
+{% end %}
+</table>
+
+{% module Template("footer.html") %}
+

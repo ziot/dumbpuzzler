@@ -1,0 +1,14 @@
+
+
+{% module Template("header.html") %}
+
+<ul>
+{% for addon in addons %}
+{% block addon %}
+    <li>{{ addon["name"] }}</li>
+{% end %}
+{% end %}
+</ul>
+
+{% module Template("footer.html") %}
+
